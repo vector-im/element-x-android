@@ -30,15 +30,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -48,10 +40,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import androidx.navigation.NavHostController
-import com.airbnb.android.showkase.models.Showkase
 import com.airbnb.mvrx.compose.mavericksActivityViewModel
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.ramcosta.composedestinations.DestinationsNavHost
@@ -64,6 +54,8 @@ import io.element.android.x.destinations.OnBoardingScreenNavigationDestination
 import io.element.android.x.features.rageshake.bugreport.BugReportScreen
 import io.element.android.x.features.rageshake.crash.ui.CrashDetectionScreen
 import io.element.android.x.features.rageshake.detection.RageshakeDetectionScreen
+import io.element.android.x.tests.uitests.ShowkaseButton
+import io.element.android.x.tests.uitests.openShowkase
 import kotlinx.coroutines.runBlocking
 import timber.log.Timber
 
@@ -82,31 +74,6 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    private fun ShowkaseButton(
-        isVisible: Boolean,
-        onClick: () -> Unit,
-        onCloseClicked: () -> Unit
-    ) {
-        if (isVisible) {
-            Button(
-                modifier = Modifier
-                    .padding(top = 32.dp, start = 16.dp),
-                onClick = onClick
-            ) {
-                Text(text = "Showkase Browser")
-                IconButton(
-                    modifier = Modifier
-                        .padding(start = 8.dp)
-                        .size(16.dp),
-                    onClick = onCloseClicked,
-                ) {
-                    Icon(imageVector = Icons.Filled.Close, contentDescription = "")
-                }
-            }
-        }
-    }
-
-    @Composable
     private fun MainScreen(viewModel: MainViewModel) {
         val startRoute = runBlocking {
             if (!viewModel.isLoggedIn()) {
@@ -117,7 +84,6 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        var isShowkaseButtonVisible by remember { mutableStateOf(BuildConfig.DEBUG) }
         var isBugReportVisible by remember { mutableStateOf(false) }
 
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
@@ -125,9 +91,7 @@ class MainActivity : ComponentActivity() {
                 startRoute = startRoute
             )
             ShowkaseButton(
-                isVisible = isShowkaseButtonVisible,
-                onCloseClicked = { isShowkaseButtonVisible = false },
-                onClick = { startActivity(Showkase.getBrowserIntent(this@MainActivity)) }
+                onClick = { openShowkase(this@MainActivity) }
             )
             RageshakeDetectionScreen(
                 onOpenBugReport = {

@@ -163,6 +163,7 @@ dependencies {
     implementation(project(":features:rageshake"))
     implementation(project(":features:preferences"))
     implementation(project(":libraries:di"))
+    implementation(project(":tests:uitests"))
     implementation(project(":anvilannotations"))
     anvil(project(":anvilcodegen"))
 
@@ -180,7 +181,4 @@ dependencies {
 
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
-
-    implementation(libs.showkase)
-    ksp(libs.showkase.processor)
 }
