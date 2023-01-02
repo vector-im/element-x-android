@@ -93,5 +93,5 @@ fun LogoutPreferenceContent(
 @Composable
 @Preview
 fun LogoutContentPreview() {
-    LogoutPreference()
+    LogoutPreferenceContent()
 }

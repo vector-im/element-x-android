@@ -30,26 +30,32 @@ import io.element.android.x.designsystem.components.preferences.PreferenceCatego
 import io.element.android.x.designsystem.components.preferences.PreferenceSlide
 import io.element.android.x.designsystem.components.preferences.PreferenceSwitch
 import io.element.android.x.designsystem.components.preferences.PreferenceText
-import io.element.android.x.element.resources.R as ElementR
 import io.element.android.x.features.rageshake.detection.RageshakeDetectionViewModel
 import io.element.android.x.features.rageshake.detection.RageshakeDetectionViewState
+import io.element.android.x.element.resources.R as ElementR
 
 @Composable
 fun RageshakePreferences(
+    viewModel: RageshakeDetectionViewModel = mavericksViewModel(),
     onOpenRageShake: () -> Unit = {},
 ) {
+    val state: RageshakeDetectionViewState by viewModel.collectAsState()
     RageshakePreferencesContent(
+        state = state,
         onOpenRageShake = onOpenRageShake,
+        onEnableClicked = viewModel::onEnableClicked,
+        onSensitivityChange = viewModel::onSensitivityChange
     )
 }
 
 @Composable
 fun RageshakePreferencesContent(
+    state: RageshakeDetectionViewState,
     modifier: Modifier = Modifier,
-    viewModel: RageshakeDetectionViewModel = mavericksViewModel(),
     onOpenRageShake: () -> Unit = {},
+    onEnableClicked: (Boolean) -> Unit = {},
+    onSensitivityChange: (Float) -> Unit = {},
 ) {
-    val state: RageshakeDetectionViewState by viewModel.collectAsState()
     Column(modifier = modifier) {
         PreferenceCategory(title = stringResource(id = ElementR.string.send_bug_report)) {
             PreferenceText(
@@ -63,7 +69,7 @@ fun RageshakePreferencesContent(
                 PreferenceSwitch(
                     title = stringResource(id = ElementR.string.send_bug_report_rage_shake),
                     isChecked = state.isEnabled,
-                    onCheckedChange = viewModel::onEnableClicked
+                    onCheckedChange = onEnableClicked
                 )
                 PreferenceSlide(
                     title = stringResource(id = ElementR.string.settings_rageshake_detection_threshold),
@@ -71,7 +77,7 @@ fun RageshakePreferencesContent(
                     value = state.sensitivity,
                     enabled = state.isEnabled,
                     steps = 3 /* 5 possible values - steps are in ]0, 1[ */,
-                    onValueChange = viewModel::onSensitivityChange
+                    onValueChange = onSensitivityChange,
                 )
             } else {
                 PreferenceText(title = "Rageshaking is not supported by your device")
@@ -82,6 +88,18 @@ fun RageshakePreferencesContent(
 
 @Composable
 @Preview
+fun RageshakePreferencePreviewNotSupported() {
+    RageshakePreferencesContent(
+        state = RageshakeDetectionViewState()
+    )
+}
+
+@Composable
+@Preview
 fun RageshakePreferencePreview() {
-    RageshakePreferences()
+    RageshakePreferencesContent(
+        state = RageshakeDetectionViewState(
+            isSupported = true
+        )
+    )
 }
