@@ -57,7 +57,6 @@ import com.airbnb.mvrx.Uninitialized
 import com.airbnb.mvrx.compose.collectAsState
 import com.airbnb.mvrx.compose.mavericksViewModel
 import io.element.android.x.core.compose.LogCompositions
-import io.element.android.x.designsystem.ElementXTheme
 import io.element.android.x.designsystem.components.LabelledCheckbox
 import io.element.android.x.designsystem.components.dialogs.ErrorDialog
 import io.element.android.x.element.resources.R as ElementR
@@ -239,10 +238,8 @@ fun BugReportContent(
 @Composable
 @Preview
 fun BugReportContentPreview() {
-    ElementXTheme(darkTheme = false) {
-        BugReportContent(
-            state = BugReportViewState(),
-            formState = BugReportFormState.Default
-        )
-    }
+    BugReportContent(
+        state = BugReportViewState(),
+        formState = BugReportFormState.Default
+    )
 }

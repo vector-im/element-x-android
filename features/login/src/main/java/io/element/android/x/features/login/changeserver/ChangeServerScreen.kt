@@ -56,7 +56,6 @@ import com.airbnb.mvrx.Loading
 import com.airbnb.mvrx.Success
 import com.airbnb.mvrx.compose.collectAsState
 import com.airbnb.mvrx.compose.mavericksViewModel
-import io.element.android.x.designsystem.ElementXTheme
 import io.element.android.x.designsystem.components.VectorIcon
 import io.element.android.x.features.login.R
 import io.element.android.x.features.login.error.changeServerError
@@ -196,9 +195,7 @@ fun ChangeServerContent(
 @Composable
 @Preview
 fun ChangeServerContentPreview() {
-    ElementXTheme {
-        ChangeServerContent(
-            state = ChangeServerViewState(homeserver = "matrix.org"),
-        )
-    }
+    ChangeServerContent(
+        state = ChangeServerViewState(homeserver = "matrix.org"),
+    )
 }

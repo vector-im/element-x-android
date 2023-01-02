@@ -23,7 +23,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.airbnb.mvrx.compose.collectAsState
 import com.airbnb.mvrx.compose.mavericksViewModel
 import io.element.android.x.core.compose.LogCompositions
-import io.element.android.x.designsystem.ElementXTheme
 import io.element.android.x.designsystem.components.dialogs.ConfirmationDialog
 import io.element.android.x.element.resources.R as ElementR
 
@@ -69,9 +68,7 @@ fun CrashDetectionContent(
 @Preview
 @Composable
 fun CrashDetectionContentPreview() {
-    ElementXTheme {
-        CrashDetectionContent(
-            state = CrashDetectionViewState()
-        )
-    }
+    CrashDetectionContent(
+        state = CrashDetectionViewState()
+    )
 }

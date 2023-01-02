@@ -28,7 +28,6 @@ import com.airbnb.mvrx.Loading
 import com.airbnb.mvrx.Success
 import com.airbnb.mvrx.compose.collectAsState
 import com.airbnb.mvrx.compose.mavericksViewModel
-import io.element.android.x.designsystem.ElementXTheme
 import io.element.android.x.designsystem.components.ProgressDialog
 import io.element.android.x.designsystem.components.dialogs.ConfirmationDialog
 import io.element.android.x.designsystem.components.preferences.PreferenceCategory
@@ -94,7 +93,5 @@ fun LogoutPreferenceContent(
 @Composable
 @Preview
 fun LogoutContentPreview() {
-    ElementXTheme(darkTheme = false) {
-        LogoutPreference()
-    }
+    LogoutPreference()
 }

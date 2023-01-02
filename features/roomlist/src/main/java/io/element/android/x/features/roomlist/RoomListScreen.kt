@@ -40,7 +40,6 @@ import androidx.compose.ui.unit.Velocity
 import com.airbnb.mvrx.compose.collectAsState
 import com.airbnb.mvrx.compose.mavericksViewModel
 import io.element.android.x.core.compose.LogCompositions
-import io.element.android.x.designsystem.ElementXTheme
 import io.element.android.x.designsystem.components.avatar.AvatarData
 import io.element.android.x.features.roomlist.components.RoomListTopBar
 import io.element.android.x.features.roomlist.components.RoomSummaryRow
@@ -155,29 +154,12 @@ private fun LazyListState.isScrolled(): Boolean {
 @Preview
 @Composable
 fun PreviewableRoomListContent() {
-    ElementXTheme(darkTheme = false) {
-        RoomListContent(
-            roomSummaries = stubbedRoomSummaries(),
-            matrixUser = MatrixUser(id = UserId("@id"), username = "User#1", avatarData = AvatarData("U")),
-            onRoomClicked = {},
-            filter = "filter",
-            onFilterChanged = {},
-            onScrollOver = {}
-        )
-    }
-}
-
-@Preview
-@Composable
-fun PreviewableDarkRoomListContent() {
-    ElementXTheme(darkTheme = true) {
-        RoomListContent(
-            roomSummaries = stubbedRoomSummaries(),
-            matrixUser = MatrixUser(id = UserId("@id"), username = "User#1", avatarData = AvatarData("U")),
-            onRoomClicked = {},
-            filter = "filter",
-            onFilterChanged = {},
-            onScrollOver = {}
-        )
-    }
+    RoomListContent(
+        roomSummaries = stubbedRoomSummaries(),
+        matrixUser = MatrixUser(id = UserId("@id"), username = "User#1", avatarData = AvatarData("U")),
+        onRoomClicked = {},
+        filter = "filter",
+        onFilterChanged = {},
+        onScrollOver = {}
+    )
 }
