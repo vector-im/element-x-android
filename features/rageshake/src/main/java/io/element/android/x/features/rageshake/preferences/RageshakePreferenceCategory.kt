@@ -88,7 +88,7 @@ fun RageshakePreferencesContent(
 
 @Composable
 @Preview
-fun RageshakePreferencePreviewNotSupported() {
+fun RageshakePreferenceNotSupportedPreview() {
     RageshakePreferencesContent(
         state = RageshakeDetectionViewState()
     )

@@ -153,7 +153,7 @@ private fun LazyListState.isScrolled(): Boolean {
 
 @Preview
 @Composable
-fun PreviewableRoomListContent() {
+fun RoomListContentPreview() {
     RoomListContent(
         roomSummaries = stubbedRoomSummaries(),
         matrixUser = MatrixUser(id = UserId("@id"), username = "User#1", avatarData = AvatarData("U")),
