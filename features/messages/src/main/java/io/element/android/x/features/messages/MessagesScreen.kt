@@ -631,11 +631,11 @@ fun TimelineItemsPreview(
     TimelineItems(
         lazyListState = LazyListState(),
         timelineItems = persistentListOf(
-            // 3 items (First Middle Last) with isMine = false
+            // 3 items (Last Middle First) with isMine = false
             createMessageEvent(
                 isMine = false,
                 content = content,
-                groupPosition = MessagesItemGroupPosition.First
+                groupPosition = MessagesItemGroupPosition.Last
             ),
             createMessageEvent(
                 isMine = false,
@@ -645,13 +645,13 @@ fun TimelineItemsPreview(
             createMessageEvent(
                 isMine = false,
                 content = content,
-                groupPosition = MessagesItemGroupPosition.Last
+                groupPosition = MessagesItemGroupPosition.First
             ),
-            // 3 items (First Middle Last) with isMine = true
+            // 3 items (Last Middle First) with isMine = true
             createMessageEvent(
                 isMine = true,
                 content = content,
-                groupPosition = MessagesItemGroupPosition.First
+                groupPosition = MessagesItemGroupPosition.Last
             ),
             createMessageEvent(
                 isMine = true,
@@ -661,7 +661,7 @@ fun TimelineItemsPreview(
             createMessageEvent(
                 isMine = true,
                 content = content,
-                groupPosition = MessagesItemGroupPosition.Last
+                groupPosition = MessagesItemGroupPosition.First
             ),
         ),
         highlightedEventId = null,
