@@ -33,7 +33,7 @@ import io.element.android.x.designsystem.components.ProgressDialog
 import io.element.android.x.designsystem.components.dialogs.ConfirmationDialog
 import io.element.android.x.designsystem.components.preferences.PreferenceCategory
 import io.element.android.x.designsystem.components.preferences.PreferenceText
-import io.element.android.x.element.resources.R as ElementR
+import io.element.android.x.ui.strings.R as StringR
 
 @Composable
 fun LogoutPreference(
@@ -57,9 +57,9 @@ fun LogoutPreference(
     // Log out confirmation dialog
     if (openDialog.value) {
         ConfirmationDialog(
-            title = stringResource(id = ElementR.string.action_sign_out),
-            content = stringResource(id = ElementR.string.action_sign_out_confirmation_simple),
-            submitText = stringResource(id = ElementR.string.action_sign_out),
+            title = stringResource(id = StringR.string.action_sign_out),
+            content = stringResource(id = StringR.string.action_sign_out_confirmation_simple),
+            submitText = stringResource(id = StringR.string.action_sign_out),
             onCancelClicked = {
                 openDialog.value = false
             },
@@ -82,9 +82,9 @@ fun LogoutPreference(
 fun LogoutPreferenceContent(
     onClick: () -> Unit = {},
 ) {
-    PreferenceCategory(title = stringResource(id = ElementR.string.settings_general_title)) {
+    PreferenceCategory(title = stringResource(id = StringR.string.settings_general_title)) {
         PreferenceText(
-            title = stringResource(id = ElementR.string.action_sign_out),
+            title = stringResource(id = StringR.string.action_sign_out),
             icon = Icons.Default.Logout,
             onClick = onClick
         )

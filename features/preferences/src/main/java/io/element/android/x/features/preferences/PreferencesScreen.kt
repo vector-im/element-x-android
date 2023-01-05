@@ -21,10 +21,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import io.element.android.x.designsystem.components.preferences.PreferenceScreen
-import io.element.android.x.element.resources.R as ElementR
 import io.element.android.x.features.logout.LogoutPreference
 import io.element.android.x.features.preferences.user.UserPreferences
 import io.element.android.x.features.rageshake.preferences.RageshakePreferences
+import io.element.android.x.ui.strings.R as StringR
 
 @Composable
 fun PreferencesScreen(
@@ -51,7 +51,7 @@ fun PreferencesContent(
     PreferenceScreen(
         modifier = modifier,
         onBackPressed = onBackPressed,
-        title = stringResource(id = ElementR.string.settings)
+        title = stringResource(id = StringR.string.settings)
     ) {
         UserPreferences()
         RageshakePreferences(onOpenRageShake = onOpenRageShake)

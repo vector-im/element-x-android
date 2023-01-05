@@ -37,6 +37,7 @@ dependencies {
     implementation(project(":anvilannotations"))
     implementation(project(":libraries:designsystem"))
     implementation(project(":libraries:elementresources"))
+    implementation(project(":libraries:ui-strings"))
     implementation(libs.mavericks.compose)
     implementation(libs.squareup.seismic)
     implementation(libs.androidx.datastore.preferences)

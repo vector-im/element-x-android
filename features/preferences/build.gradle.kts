@@ -40,6 +40,7 @@ dependencies {
     implementation(project(":features:logout"))
     implementation(project(":libraries:designsystem"))
     implementation(project(":libraries:elementresources"))
+    implementation(project(":libraries:ui-strings"))
     implementation(libs.mavericks.compose)
     implementation(libs.datetime)
     implementation(libs.accompanist.placeholder)
