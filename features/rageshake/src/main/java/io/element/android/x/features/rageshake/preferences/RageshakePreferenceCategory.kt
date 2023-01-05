@@ -30,9 +30,9 @@ import io.element.android.x.designsystem.components.preferences.PreferenceCatego
 import io.element.android.x.designsystem.components.preferences.PreferenceSlide
 import io.element.android.x.designsystem.components.preferences.PreferenceSwitch
 import io.element.android.x.designsystem.components.preferences.PreferenceText
-import io.element.android.x.element.resources.R as ElementR
 import io.element.android.x.features.rageshake.detection.RageshakeDetectionViewModel
 import io.element.android.x.features.rageshake.detection.RageshakeDetectionViewState
+import io.element.android.x.ui.strings.R as StringR
 
 @Composable
 fun RageshakePreferences(
@@ -51,23 +51,23 @@ fun RageshakePreferencesContent(
 ) {
     val state: RageshakeDetectionViewState by viewModel.collectAsState()
     Column(modifier = modifier) {
-        PreferenceCategory(title = stringResource(id = ElementR.string.send_bug_report)) {
+        PreferenceCategory(title = stringResource(id = StringR.string.send_bug_report)) {
             PreferenceText(
-                title = stringResource(id = ElementR.string.send_bug_report),
+                title = stringResource(id = StringR.string.send_bug_report),
                 icon = Icons.Default.BugReport,
                 onClick = onOpenRageShake
             )
         }
-        PreferenceCategory(title = stringResource(id = ElementR.string.settings_rageshake)) {
+        PreferenceCategory(title = stringResource(id = StringR.string.settings_rageshake)) {
             if (state.isSupported) {
                 PreferenceSwitch(
-                    title = stringResource(id = ElementR.string.send_bug_report_rage_shake),
+                    title = stringResource(id = StringR.string.send_bug_report_rage_shake),
                     isChecked = state.isEnabled,
                     onCheckedChange = viewModel::onEnableClicked
                 )
                 PreferenceSlide(
-                    title = stringResource(id = ElementR.string.settings_rageshake_detection_threshold),
-                    // summary = stringResource(id = ElementR.string.settings_rageshake_detection_threshold_summary),
+                    title = stringResource(id = StringR.string.settings_rageshake_detection_threshold),
+                    // summary = stringResource(id = StringR.string.settings_rageshake_detection_threshold_summary),
                     value = state.sensitivity,
                     enabled = state.isEnabled,
                     steps = 3 /* 5 possible values - steps are in ]0, 1[ */,

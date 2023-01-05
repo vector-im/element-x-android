@@ -60,7 +60,7 @@ import io.element.android.x.core.compose.LogCompositions
 import io.element.android.x.designsystem.ElementXTheme
 import io.element.android.x.designsystem.components.LabelledCheckbox
 import io.element.android.x.designsystem.components.dialogs.ErrorDialog
-import io.element.android.x.element.resources.R as ElementR
+import io.element.android.x.ui.strings.R as StringR
 
 @Composable
 fun BugReportScreen(
@@ -124,7 +124,7 @@ fun BugReportContent(
                 val isFormEnabled = state.sending !is Loading
                 // Title
                 Text(
-                    text = stringResource(id = ElementR.string.send_bug_report),
+                    text = stringResource(id = StringR.string.send_bug_report),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 16.dp),
@@ -134,7 +134,7 @@ fun BugReportContent(
                 )
                 // Form
                 Text(
-                    text = stringResource(id = ElementR.string.send_bug_report_description),
+                    text = stringResource(id = StringR.string.send_bug_report_description),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 16.dp),
@@ -150,10 +150,10 @@ fun BugReportContent(
                             .padding(top = 16.dp),
                         enabled = isFormEnabled,
                         label = {
-                            Text(text = stringResource(id = ElementR.string.send_bug_report_placeholder))
+                            Text(text = stringResource(id = StringR.string.send_bug_report_placeholder))
                         },
                         supportingText = {
-                            Text(text = stringResource(id = ElementR.string.send_bug_report_description_in_english))
+                            Text(text = stringResource(id = StringR.string.send_bug_report_description_in_english))
                         },
                         onValueChange = onDescriptionChanged,
                         keyboardOptions = KeyboardOptions(
@@ -167,28 +167,28 @@ fun BugReportContent(
                     checked = state.sendLogs,
                     onCheckedChange = onSetSendLog,
                     enabled = isFormEnabled,
-                    text = stringResource(id = ElementR.string.send_bug_report_include_logs)
+                    text = stringResource(id = StringR.string.send_bug_report_include_logs)
                 )
                 if (state.hasCrashLogs) {
                     LabelledCheckbox(
                         checked = state.sendCrashLogs,
                         onCheckedChange = onSetSendCrashLog,
                         enabled = isFormEnabled,
-                        text = stringResource(id = ElementR.string.send_bug_report_include_crash_logs)
+                        text = stringResource(id = StringR.string.send_bug_report_include_crash_logs)
                     )
                 }
                 LabelledCheckbox(
                     checked = state.canContact,
                     onCheckedChange = onSetCanContact,
                     enabled = isFormEnabled,
-                    text = stringResource(id = ElementR.string.you_may_contact_me)
+                    text = stringResource(id = StringR.string.you_may_contact_me)
                 )
                 if (state.screenshotUri != null) {
                     LabelledCheckbox(
                         checked = state.sendScreenshot,
                         onCheckedChange = onSetSendScreenshot,
                         enabled = isFormEnabled,
-                        text = stringResource(id = ElementR.string.send_bug_report_include_screenshot)
+                        text = stringResource(id = StringR.string.send_bug_report_include_screenshot)
                     )
                     if (state.sendScreenshot) {
                         Box(
@@ -215,7 +215,7 @@ fun BugReportContent(
                         .fillMaxWidth()
                         .padding(vertical = 32.dp)
                 ) {
-                    Text(text = stringResource(id = ElementR.string.action_send))
+                    Text(text = stringResource(id = StringR.string.action_send))
                 }
             }
             when (state.sending) {

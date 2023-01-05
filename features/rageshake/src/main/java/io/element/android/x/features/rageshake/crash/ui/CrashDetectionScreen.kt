@@ -25,7 +25,7 @@ import com.airbnb.mvrx.compose.mavericksViewModel
 import io.element.android.x.core.compose.LogCompositions
 import io.element.android.x.designsystem.ElementXTheme
 import io.element.android.x.designsystem.components.dialogs.ConfirmationDialog
-import io.element.android.x.element.resources.R as ElementR
+import io.element.android.x.ui.strings.R as StringR
 
 @Composable
 fun CrashDetectionScreen(
@@ -56,10 +56,10 @@ fun CrashDetectionContent(
     onDismiss: () -> Unit = { },
 ) {
     ConfirmationDialog(
-        title = stringResource(id = ElementR.string.send_bug_report),
-        content = stringResource(id = ElementR.string.send_bug_report_app_crashed),
-        submitText = stringResource(id = ElementR.string.yes),
-        cancelText = stringResource(id = ElementR.string.no),
+        title = stringResource(id = StringR.string.send_bug_report),
+        content = stringResource(id = StringR.string.send_bug_report_app_crashed),
+        submitText = stringResource(id = StringR.string.yes),
+        cancelText = stringResource(id = StringR.string.no),
         onCancelClicked = onNoClicked,
         onSubmitClicked = onYesClicked,
         onDismiss = onDismiss,
