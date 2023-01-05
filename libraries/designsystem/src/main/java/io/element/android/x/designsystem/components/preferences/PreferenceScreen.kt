@@ -111,7 +111,7 @@ fun PreferenceTopAppBar(
 }
 
 @Composable
-@Preview(showBackground = false)
+@Preview
 fun PreferenceScreenPreview() {
     PreferenceScreen(
         title = "Preference screen"

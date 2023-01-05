@@ -90,6 +90,7 @@ import com.airbnb.mvrx.compose.mavericksViewModel
 import io.element.android.x.core.compose.LogCompositions
 import io.element.android.x.core.compose.PairCombinedPreviewParameter
 import io.element.android.x.core.data.StableCharSequence
+import io.element.android.x.designsystem.LocalIsDarkTheme
 import io.element.android.x.designsystem.components.avatar.Avatar
 import io.element.android.x.designsystem.components.avatar.AvatarData
 import io.element.android.x.features.messages.components.MessageEventBubble
@@ -117,13 +118,13 @@ import io.element.android.x.features.messages.textcomposer.MessageComposerViewMo
 import io.element.android.x.features.messages.textcomposer.MessageComposerViewState
 import io.element.android.x.textcomposer.MessageComposerMode
 import io.element.android.x.textcomposer.TextComposer
-import java.lang.Math.random
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.lang.Math.random
 
 @Composable
 fun MessagesScreen(
@@ -303,6 +304,7 @@ fun MessagesContent(
             onComposerTextChange = onComposerTextChange,
             composerCanSendMessage = composerCanSendMessage,
             composerText = composerText?.charSequence?.toString(),
+            isInDarkMode = LocalIsDarkTheme.current,
             modifier = Modifier
                 .fillMaxWidth()
                 .let {
@@ -620,7 +622,7 @@ class MessagesItemGroupPositionToMessagesTimelineItemContentProvider :
     )
 
 @Suppress("PreviewPublic")
-@Preview(showBackground = true)
+@Preview
 @Composable
 fun TimelineItemsPreview(
     @PreviewParameter(MessagesTimelineItemContentProvider::class)
@@ -629,11 +631,11 @@ fun TimelineItemsPreview(
     TimelineItems(
         lazyListState = LazyListState(),
         timelineItems = persistentListOf(
-            // 3 items (First Middle Last) with isMine = false
+            // 3 items (Last Middle First) with isMine = false
             createMessageEvent(
                 isMine = false,
                 content = content,
-                groupPosition = MessagesItemGroupPosition.First
+                groupPosition = MessagesItemGroupPosition.Last
             ),
             createMessageEvent(
                 isMine = false,
@@ -643,13 +645,13 @@ fun TimelineItemsPreview(
             createMessageEvent(
                 isMine = false,
                 content = content,
-                groupPosition = MessagesItemGroupPosition.Last
+                groupPosition = MessagesItemGroupPosition.First
             ),
-            // 3 items (First Middle Last) with isMine = true
+            // 3 items (Last Middle First) with isMine = true
             createMessageEvent(
                 isMine = true,
                 content = content,
-                groupPosition = MessagesItemGroupPosition.First
+                groupPosition = MessagesItemGroupPosition.Last
             ),
             createMessageEvent(
                 isMine = true,
@@ -659,7 +661,7 @@ fun TimelineItemsPreview(
             createMessageEvent(
                 isMine = true,
                 content = content,
-                groupPosition = MessagesItemGroupPosition.Last
+                groupPosition = MessagesItemGroupPosition.First
             ),
         ),
         highlightedEventId = null,

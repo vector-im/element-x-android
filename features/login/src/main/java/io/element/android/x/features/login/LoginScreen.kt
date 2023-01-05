@@ -63,7 +63,6 @@ import com.airbnb.mvrx.Loading
 import com.airbnb.mvrx.Success
 import com.airbnb.mvrx.compose.collectAsState
 import com.airbnb.mvrx.compose.mavericksViewModel
-import io.element.android.x.designsystem.ElementXTheme
 import io.element.android.x.features.login.error.loginError
 import io.element.android.x.matrix.MatrixClient
 import timber.log.Timber
@@ -245,12 +244,10 @@ fun LoginContent(
 @Composable
 @Preview
 fun LoginContentPreview() {
-    ElementXTheme(darkTheme = false) {
-        LoginContent(
-            state = LoginViewState(
-                homeserver = "matrix.org",
-            ),
-            formState = LoginFormState("", "")
-        )
-    }
+    LoginContent(
+        state = LoginViewState(
+            homeserver = "matrix.org",
+        ),
+        formState = LoginFormState("", "")
+    )
 }
